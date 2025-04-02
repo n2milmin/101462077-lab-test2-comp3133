@@ -24,7 +24,7 @@
       <li><a [href]="mission.links.video_link">Video</a></li>
     </ul>
 
-    <button mat-button [routerLink]="['/mission', mission.flight_number]">
+    <button mat-button (click)="onDetails(mission.flight_number)">
       View Details
     </button>
   </mat-card-content>

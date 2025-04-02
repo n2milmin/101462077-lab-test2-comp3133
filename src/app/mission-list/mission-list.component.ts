@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { Mission } from '../mission';
 import { ApiService } from '../api.service';
-import { RouterLink } from '@angular/router';
 import { MissionFilterComponent } from '../mission-filter/mission-filter.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -12,7 +11,7 @@ import { MatListModule } from '@angular/material/list';
 @Component({
   selector: 'app-mission-list',
   standalone: true,
-  imports: [RouterLink, CommonModule, NgFor, MissionFilterComponent,
+  imports: [CommonModule, NgFor, MissionFilterComponent,
     MatButtonModule, MatCardModule, MatIconModule, MatListModule
   ],
   templateUrl: './mission-list.component.html',
@@ -21,6 +20,7 @@ import { MatListModule } from '@angular/material/list';
 export class MissionListComponent {
   missionList: Mission[] = [];
   filteredList: Mission[] = [];
+  @Output() missionSelected = new EventEmitter<string>();
 
   constructor(private apiService: ApiService) { }
 
@@ -54,5 +54,9 @@ export class MissionListComponent {
     this.filteredList = year ? 
     this.missionList.filter(mission => mission.launch_year.includes(year)) :
     [...this.missionList];
+  }
+
+  onDetails(id: number){
+    this.missionSelected.emit(String(id));
   }
 }

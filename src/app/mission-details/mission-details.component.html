@@ -1,1 +1,31 @@
-<p>mission-details works!</p>
+<mat-card *ngIf="mission; else loadingOrError">
+    <mat-card-header>
+      <mat-card-title>{{ mission.mission_name }}</mat-card-title>
+      <mat-card-subtitle>Flight Number: {{ mission.flight_number }}</mat-card-subtitle>
+    </mat-card-header>
+    
+    <img mat-card-image [src]="mission.mission_patch_small" alt="Mission Patch" class="mat-card-image" />
+    
+    <mat-card-content>
+      <p><strong>Launch Year:</strong> {{ mission.launch_year }}</p>
+      <p><strong>Details:</strong> {{ mission.details }}</p>
+      
+      <h3>Rocket Details</h3>
+      <ul>
+        <li>Rocket Name: {{ mission.rocket?.rocket_name }}</li>
+        <li>Rocket Type: {{ mission.rocket?.rocket_type }}</li>
+      </ul>
+  
+      <h3>Links</h3>
+      <ul>
+        <li><a [href]="mission.links?.mission_patch_small" target="_blank">Mission Patch Small</a></li>
+        <li><a [href]="mission.links?.article_link" target="_blank">Article</a></li>
+        <li><a [href]="mission.links?.wikipedia" target="_blank">Wikipedia</a></li>
+        <li><a [href]="mission.links?.video_link" target="_blank">Video</a></li>
+      </ul>
+    </mat-card-content>
+</mat-card>
+  
+<ng-template #loadingOrError>
+    <p>Unable to load</p>>
+</ng-template>

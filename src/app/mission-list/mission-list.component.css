@@ -1,0 +1,32 @@
+.mission-card {
+    margin: 15px;
+    display: flex;
+    flex-direction: row;  
+    gap: 15px;  
+    align-items: flex-start; 
+    width: 50%;
+}
+  
+.mat-card-image {
+    width: 150px;  
+    height: auto;  
+    border-radius: 8px;
+}
+  
+.mat-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1; 
+}
+  
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+  
+ul li {
+    margin-bottom: 5px;
+}
+  

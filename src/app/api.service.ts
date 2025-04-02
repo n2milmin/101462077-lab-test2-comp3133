@@ -14,4 +14,8 @@ export class ApiService {
   getAll(): Observable<Mission[]> {
     return this.http.get<Mission[]>(this.url);
   }
+
+  getDetails(id: string): Observable<Mission> {
+    return this.http.get<Mission>(`${this.url}/:${id}`);
+  }
 }

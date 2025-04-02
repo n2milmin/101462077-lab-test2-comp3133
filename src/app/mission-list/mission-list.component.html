@@ -1,23 +1,31 @@
 <app-mission-filter (filtered)="onFilterChange($event)"></app-mission-filter>
 
-<ul style="list-style-type:none">
-    <li *ngFor="let mission of filteredList">
-        <h4><strong><a [href]=''>Flight Number:</a></strong> {{mission.flight_number}}</h4>
-        <p><strong>Mission Name:</strong> {{mission.mission_name}}</p>
-        <p><strong>Launch Year:</strong> {{mission.launch_year}}</p>
-        <p><strong>Details:</strong> {{mission.details}}</p>
-        <p><strong>Mission Patch Small:</strong> {{mission.mission_patch_small}}</p>
-        <p><strong>Rocket</strong></p>
-        <ul>
-            <li>Rocket Name: {{mission.rocket.rocket_name}}</li>
-            <li>Rocket Type: {{mission.rocket.rocket_type}}</li>
-        </ul>
-        <p><strong>Links</strong></p>
-        <ul>
-            <li><a [href]="mission.links.mission_patch_small">Mission Patch Small</a></li>
-            <li><a [href]="mission.links.article_link">Article</a></li>
-            <li><a [href]="mission.links.wikipedia">Wikipedia</a></li>
-            <li><a [href]="mission.links.video_link">Video</a></li>
-        </ul>
-    </li>
-</ul>
+<mat-card *ngFor="let mission of filteredList" class="mission-card">
+  <img mat-card-image [src]="mission.mission_patch_small" alt="Mission Patch" class="mat-card-image" />
+  
+  <mat-card-content class="mat-card-content">
+    <mat-card-header>
+      <mat-card-title>{{ mission.mission_name }}</mat-card-title>
+      <mat-card-subtitle>Flight Number: {{ mission.flight_number }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <p><strong>Launch Year:</strong> {{mission.launch_year}}</p>
+    <p><strong>Details:</strong> {{mission.details}}</p>
+    <p><strong>Rocket</strong></p>
+    <ul>
+      <li>Rocket Name: {{mission.rocket.rocket_name}}</li>
+      <li>Rocket Type: {{mission.rocket.rocket_type}}</li>
+    </ul>
+    <p><strong>Links</strong></p>
+    <ul>
+      <li><a [href]="mission.links.mission_patch_small">Mission Patch Small</a></li>
+      <li><a [href]="mission.links.article_link">Article</a></li>
+      <li><a [href]="mission.links.wikipedia">Wikipedia</a></li>
+      <li><a [href]="mission.links.video_link">Video</a></li>
+    </ul>
+
+    <button mat-button [routerLink]="['/mission', mission.flight_number]">
+      View Details
+    </button>
+  </mat-card-content>
+</mat-card>

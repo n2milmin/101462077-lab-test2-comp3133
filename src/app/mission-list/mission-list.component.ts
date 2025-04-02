@@ -4,11 +4,17 @@ import { Mission } from '../mission';
 import { ApiService } from '../api.service';
 import { RouterLink } from '@angular/router';
 import { MissionFilterComponent } from '../mission-filter/mission-filter.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-mission-list',
   standalone: true,
-  imports: [RouterLink, CommonModule, NgFor, MissionFilterComponent],
+  imports: [RouterLink, CommonModule, NgFor, MissionFilterComponent,
+    MatButtonModule, MatCardModule, MatIconModule, MatListModule
+  ],
   templateUrl: './mission-list.component.html',
   styleUrl: './mission-list.component.css'
 })

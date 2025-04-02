@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { Mission } from '../mission';
 import { ApiService } from '../api.service';
 import { RouterLink } from '@angular/router';
+import { MissionFilterComponent } from '../mission-filter/mission-filter.component';
 
 @Component({
   selector: 'app-mission-list',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, NgFor, MissionFilterComponent],
   templateUrl: './mission-list.component.html',
   styleUrl: './mission-list.component.css'
 })
 export class MissionListComponent {
   missionList: Mission[] = [];
-  filteredMissions: Mission[] = [];
+  filteredList: Mission[] = [];
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-    this.apiService.getAllMissions().subscribe(data => {
-      console.log(data)
+    this.apiService.getAll().subscribe((data: Mission[]) => {
       this.missionList = data.map(mission => ({
         flight_number: mission.flight_number,
         mission_name: mission.mission_name,
@@ -40,7 +40,13 @@ export class MissionListComponent {
         }
       }));
 
-      this.filteredMissions = [...this.missionList];
+      this.filteredList = [...this.missionList];
     })
+  }
+
+  onFilterChange(year: string) {
+    this.filteredList = year ? 
+    this.missionList.filter(mission => mission.launch_year.includes(year)) :
+    [...this.missionList];
   }
 }

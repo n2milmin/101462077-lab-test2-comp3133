@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { MissionListComponent } from './mission-list/mission-list.component';
 
 @Component({
   selector: 'app-root',
-  imports: [ MissionListComponent],
+  imports: [MissionListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -10,13 +10,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './mission-filter.component.css'
 })
 export class MissionFilterComponent {
-  @Output() filtered = new EventEmitter<any>();
+  @Output() filtered = new EventEmitter<string>();
 
   year: string = '';
 
   changeFilter() {
-    this.filtered.emit({
-      year: this.year
-    })
+    this.filtered.emit(this.year);
   }
 }

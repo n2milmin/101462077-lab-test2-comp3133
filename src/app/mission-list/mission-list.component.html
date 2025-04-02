@@ -1,21 +1,23 @@
-<ul>
-    <li *ngFor="let mission in missionList">
-        <h4><strong>Flight Number:</strong> {{launch.flight_number}}</h4>
-        <p><strong>Mission Name:</strong> {{launch.mission_name}}</p>
-        <p><strong>Launch Year:</strong> {{launch.year}}</p>
-        <p><strong>Details:</strong> {{launch.details}}</p>
-        <p><strong>Mission Patch Small:</strong> {{launch.mission_patch_small}}</p>
+<app-mission-filter (filtered)="onFilterChange($event)"></app-mission-filter>
+
+<ul style="list-style-type:none">
+    <li *ngFor="let mission of filteredList">
+        <h4><strong><a [href]=''>Flight Number:</a></strong> {{mission.flight_number}}</h4>
+        <p><strong>Mission Name:</strong> {{mission.mission_name}}</p>
+        <p><strong>Launch Year:</strong> {{mission.launch_year}}</p>
+        <p><strong>Details:</strong> {{mission.details}}</p>
+        <p><strong>Mission Patch Small:</strong> {{mission.mission_patch_small}}</p>
         <p><strong>Rocket</strong></p>
         <ul>
-            <li>Rocket Name: {{launch.rocket.rocket_name}}</li>
-            <li>Rocket Type: {{launch.rocket.rocket_type}}</li>
+            <li>Rocket Name: {{mission.rocket.rocket_name}}</li>
+            <li>Rocket Type: {{mission.rocket.rocket_type}}</li>
         </ul>
         <p><strong>Links</strong></p>
         <ul>
-            <li><a [href]="launch.links.mission_patch_small">Mission Patch Small</a></li>
-            <li><a [href]="launch.links.article">Article</a></li>
-            <li><a [href]="launch.links.wikipedia">Wikipedia</a></li>
-            <li><a [href]="launch.links.video_link">Video</a></li>
+            <li><a [href]="mission.links.mission_patch_small">Mission Patch Small</a></li>
+            <li><a [href]="mission.links.article_link">Article</a></li>
+            <li><a [href]="mission.links.wikipedia">Wikipedia</a></li>
+            <li><a [href]="mission.links.video_link">Video</a></li>
         </ul>
     </li>
 </ul>

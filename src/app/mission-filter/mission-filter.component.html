@@ -1,5 +1,8 @@
-<label for="filtered">Filter by Launch Year:</label>
-<select id="filtered" [(ngModel)]="year" (ngModelChange)="changeFilter()">
-    <option value="">All</option>
-    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-</select>
+<label for="year">Filter by Launch Year:</label>
+<input 
+  type="text" 
+  id="year" 
+  [(ngModel)]="year" 
+  (ngModelChange)="changeFilter()" 
+  placeholder="Enter year..."
+/>

@@ -1,1 +1,21 @@
-<p>mission-list works!</p>
+<ul>
+    <li *ngFor="let mission in missionList">
+        <h4><strong>Flight Number:</strong> {{launch.flight_number}}</h4>
+        <p><strong>Mission Name:</strong> {{launch.mission_name}}</p>
+        <p><strong>Launch Year:</strong> {{launch.year}}</p>
+        <p><strong>Details:</strong> {{launch.details}}</p>
+        <p><strong>Mission Patch Small:</strong> {{launch.mission_patch_small}}</p>
+        <p><strong>Rocket</strong></p>
+        <ul>
+            <li>Rocket Name: {{launch.rocket.rocket_name}}</li>
+            <li>Rocket Type: {{launch.rocket.rocket_type}}</li>
+        </ul>
+        <p><strong>Links</strong></p>
+        <ul>
+            <li><a [href]="launch.links.mission_patch_small">Mission Patch Small</a></li>
+            <li><a [href]="launch.links.article">Article</a></li>
+            <li><a [href]="launch.links.wikipedia">Wikipedia</a></li>
+            <li><a [href]="launch.links.video_link">Video</a></li>
+        </ul>
+    </li>
+</ul>

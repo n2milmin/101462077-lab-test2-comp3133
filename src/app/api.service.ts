@@ -6,5 +6,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  fetchData(url: any){
+    return this.http.get<any[]>(url)
+  }
 }

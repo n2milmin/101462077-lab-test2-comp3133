@@ -1,17 +1,17 @@
 export interface Mission {
-    flight_number: number;
-    mission_name: string;
-    launch_year: string;
-    details: string;
-    mission_patch_small: string;
+    flight_number: number,
+    mission_name: string,
+    launch_year: string,
+    details: string | null,
+    mission_patch_small: string,
     rocket: {
-        rocket_name: string;
-        rocket_type: string;
-    };
+        rocket_name: string,
+        rocket_type: string,
+    },
     links: {
-        mission_patch_small: string;
-        article_link: string;
-        wikipedia: string;
-        video_link: string;
-    };
+        mission_patch_small: string,
+        article_link: string,
+        wikipedia: string,
+        video_link: string,
+    }
 }

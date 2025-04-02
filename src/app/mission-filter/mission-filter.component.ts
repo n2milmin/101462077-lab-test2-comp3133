@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-mission-filter',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './mission-filter.component.html',
   styleUrl: './mission-filter.component.css'
 })
 export class MissionFilterComponent {
+  @Output() filtered = new EventEmitter<any>();
 
+  year: string = '';
+
+  changeFilter() {
+    this.filtered.emit({
+      year: this.year
+    })
+  }
 }
